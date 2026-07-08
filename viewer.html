@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proyector – Corrección de trapecio</title>
+  <link rel="stylesheet" href="viewer.css" />
+</head>
+<body>
+  <div id="stage">
+    <canvas id="gl"></canvas>
+  </div>
+
+  <!-- Overlay inicial / mensajes -->
+  <div id="overlay" class="overlay">
+    <div class="card">
+      <h1>Proyector con corrección de trapecio</h1>
+      <p id="overlayMsg">Preparando la captura…</p>
+      <div class="overlay-buttons">
+        <button id="btnUseTab" class="btn primary" hidden>Usar la pestaña capturada</button>
+        <button id="btnPickOther" class="btn">Capturar otra ventana / pantalla…</button>
+        <button id="btnUseWebcam" class="btn">Usar webcam / entrada de video…</button>
+      </div>
+      <p class="hint">
+        Consejo: arrastra esta ventana al proyector y pulsa <b>F</b> para pantalla completa.
+      </p>
+    </div>
+  </div>
+
+  <!-- Panel de control -->
+  <div id="panel" class="panel">
+    <div class="source-row">
+      <span class="src-label">Fuente:</span>
+      <button id="srcTab" class="btn small">Pestaña</button>
+      <button id="srcDesktop" class="btn small">Ventana / Pantalla</button>
+      <button id="srcWebcam" class="btn small">Webcam</button>
+      <span id="cameraRow" class="camera-row" hidden>
+        <label for="cameraSelect">Cámara:</label>
+        <select id="cameraSelect" class="camera-select"></select>
+      </span>
+    </div>
+
+    <div class="panel-main">
+      <div class="big-group">
+        <div class="big-label">Esquinas superiores</div>
+        <div class="big-buttons">
+          <button id="btnAcercar" class="btn big" title="Junta las esquinas superiores (teclado: ←)">
+            <span class="arrows">→ ←</span>
+            <span>Acercar</span>
+          </button>
+          <button id="btnAlejar" class="btn big" title="Separa las esquinas superiores (teclado: →)">
+            <span class="arrows">← →</span>
+            <span>Alejar</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="side-group">
+        <div class="step-row">
+          <span>Paso</span>
+          <button id="btnStepDown" class="btn small">−</button>
+          <span id="stepValue" class="value">1.0%</span>
+          <button id="btnStepUp" class="btn small">+</button>
+        </div>
+        <div class="side-buttons">
+          <button id="btnFlipV" class="btn small" title="Voltear verticalmente (V)">Voltear V</button>
+          <button id="btnFlipH" class="btn small" title="Voltear horizontalmente (B)">Voltear H</button>
+          <button id="btnAdvanced" class="btn small">Ajuste por esquina ▾</button>
+          <button id="btnFullscreen" class="btn small">Pantalla completa (F)</button>
+          <button id="btnReset" class="btn small">Reiniciar (R)</button>
+          <button id="btnHide" class="btn small">Ocultar panel (H)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ajuste avanzado por esquina (4 puntos) -->
+    <div id="advanced" class="advanced" hidden>
+      <div class="corner" data-corner="tl">
+        <span class="corner-name">Sup. izq.</span>
+        <button class="btn tiny" data-axis="x" data-dir="-1">◄</button>
+        <button class="btn tiny" data-axis="x" data-dir="1">►</button>
+        <button class="btn tiny" data-axis="y" data-dir="1">▲</button>
+        <button class="btn tiny" data-axis="y" data-dir="-1">▼</button>
+      </div>
+      <div class="corner" data-corner="tr">
+        <span class="corner-name">Sup. der.</span>
+        <button class="btn tiny" data-axis="x" data-dir="-1">◄</button>
+        <button class="btn tiny" data-axis="x" data-dir="1">►</button>
+        <button class="btn tiny" data-axis="y" data-dir="1">▲</button>
+        <button class="btn tiny" data-axis="y" data-dir="-1">▼</button>
+      </div>
+      <div class="corner" data-corner="bl">
+        <span class="corner-name">Inf. izq.</span>
+        <button class="btn tiny" data-axis="x" data-dir="-1">◄</button>
+        <button class="btn tiny" data-axis="x" data-dir="1">►</button>
+        <button class="btn tiny" data-axis="y" data-dir="1">▲</button>
+        <button class="btn tiny" data-axis="y" data-dir="-1">▼</button>
+      </div>
+      <div class="corner" data-corner="br">
+        <span class="corner-name">Inf. der.</span>
+        <button class="btn tiny" data-axis="x" data-dir="-1">◄</button>
+        <button class="btn tiny" data-axis="x" data-dir="1">►</button>
+        <button class="btn tiny" data-axis="y" data-dir="1">▲</button>
+        <button class="btn tiny" data-axis="y" data-dir="-1">▼</button>
+      </div>
+      <p class="advanced-hint">
+        Teclas 1–4 seleccionan una esquina; las flechas la mueven. La rejilla ayuda a alinear.
+        <label class="grid-toggle"><input type="checkbox" id="gridToggle" /> Rejilla</label>
+      </p>
+    </div>
+
+    <div id="readout" class="readout"></div>
+  </div>
+
+  <!-- Botón para volver a mostrar el panel cuando está oculto -->
+  <button id="showPanel" class="show-panel" hidden>▲ Mostrar controles (H)</button>
+
+  <script src="viewer.js"></script>
+</body>
+</html>

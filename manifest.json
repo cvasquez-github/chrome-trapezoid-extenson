@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Trapecio Keystone – Proyector",
+  "version": "1.0.0",
+  "description": "Captura una pestaña/ventana de Chrome y la proyecta a pantalla completa en un lienzo WebGL con forma de trapecio para corregir el keystone por software.",
+  "permissions": ["tabCapture", "desktopCapture", "system.display", "activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Proyectar esta pestaña con corrección de trapecio",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
