@@ -24,6 +24,10 @@
       <p class="hint">
         Consejo: arrastra esta ventana al proyector y pulsa <b>F</b> para pantalla completa.
       </p>
+      <p class="credit">
+        Desarrollado por
+        <a href="https://github.com/cvasquez-github/chrome-trapezoid-extenson" target="_blank" rel="noopener">Carlos Vasquez</a>
+      </p>
     </div>
   </div>
 
@@ -55,6 +59,79 @@
         </div>
       </div>
 
+      <div class="big-group">
+        <div class="big-label">Esquinas inferiores</div>
+        <div class="big-buttons">
+          <button id="btnAcercarInf" class="btn big" title="Junta las esquinas inferiores">
+            <span class="arrows">→ ←</span>
+            <span>Acercar</span>
+          </button>
+          <button id="btnAlejarInf" class="btn big" title="Separa las esquinas inferiores (puede sobrepasar la pantalla)">
+            <span class="arrows">← →</span>
+            <span>Alejar</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="big-group">
+        <div class="big-label">Zoom <span id="zoomValue" class="value-inline">100%</span></div>
+        <div class="big-buttons">
+          <button id="btnZoomOut" class="btn big" title="Achicar la imagen (teclado: AvPág)">
+            <span class="arrows">−</span>
+            <span>Achicar</span>
+          </button>
+          <button id="btnZoomIn" class="btn big" title="Agrandar la imagen (teclado: RePág)">
+            <span class="arrows">+</span>
+            <span>Agrandar</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="big-group">
+        <div class="big-label">Tamaño</div>
+        <div class="step-row">
+          <span class="size-lbl">Ancho</span>
+          <button id="btnWidthDown" class="btn small" title="Reducir el ancho">−</button>
+          <span id="widthValue" class="value">100%</span>
+          <button id="btnWidthUp" class="btn small" title="Aumentar el ancho">+</button>
+        </div>
+        <div class="step-row">
+          <span class="size-lbl">Alto</span>
+          <button id="btnHeightDown" class="btn small" title="Reducir el alto">−</button>
+          <span id="heightValue" class="value">100%</span>
+          <button id="btnHeightUp" class="btn small" title="Aumentar el alto">+</button>
+        </div>
+        <div class="fit-row">
+          <button id="btnFitFill" class="btn small" title="Cubrir todo el ancho y alto (estira, ignora la proporción)">Rellenar</button>
+          <button id="btnFitUniform" class="btn small" title="Ocupar el máximo posible manteniendo la proporción original">Uniforme</button>
+        </div>
+      </div>
+
+      <div class="big-group">
+        <div class="big-label">Inclinación <span id="tiltValue" class="value-inline">0°</span></div>
+        <div class="big-buttons">
+          <button id="btnTiltLeft" class="btn big" title="Inclinar a la izquierda (teclado: ,)">
+            <span class="arrows">↺</span>
+            <span>Izquierda</span>
+          </button>
+          <button id="btnTiltRight" class="btn big" title="Inclinar a la derecha (teclado: .)">
+            <span class="arrows">↻</span>
+            <span>Derecha</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="big-group">
+        <div class="big-label">Mover <span id="panValue" class="value-inline">0.00, 0.00</span></div>
+        <div class="dpad">
+          <button id="btnPanUp" class="btn pad" title="Mover arriba (W)">▲</button>
+          <button id="btnPanLeft" class="btn pad" title="Mover izquierda (A)">◄</button>
+          <button id="btnPanReset" class="btn pad" title="Centrar (volver al centro)">•</button>
+          <button id="btnPanRight" class="btn pad" title="Mover derecha (D)">►</button>
+          <button id="btnPanDown" class="btn pad" title="Mover abajo (S)">▼</button>
+        </div>
+      </div>
+
       <div class="side-group">
         <div class="step-row">
           <span>Paso</span>
@@ -68,6 +145,8 @@
           <button id="btnAdvanced" class="btn small">Ajuste por esquina ▾</button>
           <button id="btnFullscreen" class="btn small">Pantalla completa (F)</button>
           <button id="btnReset" class="btn small">Reiniciar (R)</button>
+          <button id="btnSaveDefault" class="btn small" title="Guarda la calibración actual como tu Default">Guardar Default</button>
+          <button id="btnLoadDefault" class="btn small" title="Restaura tu Default guardado">Cargar Default</button>
           <button id="btnHide" class="btn small" title="H recorre: completo → mini → oculto">Minimizar (H)</button>
         </div>
       </div>

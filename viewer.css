@@ -60,6 +60,9 @@ html, body {
 .card h1 { font-size: 22px; margin: 0 0 10px; }
 .card p { margin: 8px 0; color: var(--text); }
 .card .hint { color: var(--muted); font-size: 13px; margin-top: 18px; }
+.card .credit { color: var(--muted); font-size: 12px; margin-top: 14px; }
+.card .credit a { color: var(--accent-hi); text-decoration: none; }
+.card .credit a:hover { text-decoration: underline; }
 
 .overlay-buttons {
   display: flex;
@@ -119,6 +122,7 @@ html, body {
 
 .big-group { display: flex; flex-direction: column; gap: 6px; }
 .big-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.big-label .value-inline { color: var(--text); text-transform: none; letter-spacing: normal; margin-left: 2px; font-variant-numeric: tabular-nums; }
 .big-buttons { display: flex; gap: 10px; }
 
 .side-group {
@@ -131,6 +135,8 @@ html, body {
 }
 .step-row { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
 .step-row .value { color: var(--text); min-width: 48px; text-align: center; font-variant-numeric: tabular-nums; }
+.size-lbl { min-width: 42px; }
+.fit-row { display: flex; gap: 8px; margin-top: 2px; }
 .side-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
 
 /* ---------- Botones ---------- */
@@ -151,6 +157,8 @@ html, body {
 .btn.primary:hover { background: var(--accent-hi); }
 .btn.active { background: var(--accent); border-color: var(--accent-hi); color: #fff; }
 .btn.active:hover { background: var(--accent-hi); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn:disabled:hover { background: rgba(51, 65, 85, 0.85); }
 
 .btn.big {
   display: flex;
@@ -166,6 +174,21 @@ html, body {
 
 .btn.small { padding: 6px 10px; font-size: 13px; }
 .btn.tiny { padding: 4px 8px; font-size: 13px; min-width: 30px; }
+
+/* D-pad para mover el lienzo */
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 38px);
+  grid-template-rows: repeat(3, 30px);
+  gap: 4px;
+  justify-content: center;
+}
+.dpad .btn.pad { padding: 0; min-width: 0; width: 100%; height: 100%; font-size: 14px; }
+#btnPanUp { grid-column: 2; grid-row: 1; }
+#btnPanLeft { grid-column: 1; grid-row: 2; }
+#btnPanReset { grid-column: 2; grid-row: 2; color: var(--muted); }
+#btnPanRight { grid-column: 3; grid-row: 2; }
+#btnPanDown { grid-column: 2; grid-row: 3; }
 
 /* ---------- Ajuste avanzado ---------- */
 .advanced {
