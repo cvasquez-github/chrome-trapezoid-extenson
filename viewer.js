@@ -469,14 +469,26 @@ function selectCorner(name) {
   });
 }
 
-function setPanelHidden(hidden) {
-  panel.classList.toggle('hidden', hidden);
+// Estado del panel: 'full' (completo) -> 'mini' (botón pequeño) -> 'hidden' (nada).
+let panelState = 'full';
+
+function applyPanelState() {
+  panel.classList.toggle('hidden', panelState !== 'full');
   const showBtn = document.getElementById('showPanel');
-  if (showBtn) showBtn.hidden = !hidden;
+  if (showBtn) showBtn.hidden = (panelState !== 'mini');
 }
 
-function togglePanel() {
-  setPanelHidden(!panel.classList.contains('hidden'));
+function setPanelState(s) {
+  panelState = s;
+  applyPanelState();
+}
+
+// La tecla H recorre los tres estados en orden.
+function cyclePanel() {
+  panelState = panelState === 'full' ? 'mini'
+    : panelState === 'mini' ? 'hidden'
+    : 'full';
+  applyPanelState();
 }
 
 function applyFlipButtons() {
@@ -530,8 +542,8 @@ function wireControls() {
   document.getElementById('btnFullscreen').addEventListener('click', toggleFullscreen);
   document.getElementById('btnFlipV').addEventListener('click', toggleFlipV);
   document.getElementById('btnFlipH').addEventListener('click', toggleFlipH);
-  document.getElementById('btnHide').addEventListener('click', () => setPanelHidden(true));
-  document.getElementById('showPanel').addEventListener('click', () => setPanelHidden(false));
+  document.getElementById('btnHide').addEventListener('click', () => setPanelState('mini'));
+  document.getElementById('showPanel').addEventListener('click', () => setPanelState('full'));
 
   const advanced = document.getElementById('advanced');
   document.getElementById('btnAdvanced').addEventListener('click', () => {
@@ -611,7 +623,7 @@ function onKeyDown(ev) {
   if (k === '3') { selectCorner('bl'); return; }
   if (k === '4') { selectCorner('br'); return; }
 
-  if (k === 'h' || k === 'H') { togglePanel(); return; }
+  if (k === 'h' || k === 'H') { cyclePanel(); return; }
   if (k === 'f' || k === 'F') { ev.preventDefault(); toggleFullscreen(); return; }
   if (k === 'r' || k === 'R') { resetCorners(); return; }
   if (k === 'g' || k === 'G') {

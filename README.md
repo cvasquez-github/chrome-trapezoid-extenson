@@ -73,7 +73,7 @@ permiso de cámara).
 | `B`          | Voltear horizontalmente                                       |
 | `F`          | Pantalla completa                                             |
 | `G`          | Mostrar / ocultar rejilla de alineación                       |
-| `H`          | Mostrar / ocultar el panel de control                         |
+| `H`          | Ciclar el panel: completo → mini (botón) → oculto             |
 | `R`          | Reiniciar la calibración                                      |
 
 ## Cómo funciona la corrección
