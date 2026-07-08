@@ -156,3 +156,21 @@ No se envía nada a ningún servidor: todo el procesamiento es local en tu equip
 ## Autor
 
 Desarrollado por **Carlos Vasquez** — <https://github.com/cvasquez-github/chrome-trapezoid-extenson>
+
+## Licencia
+
+Este proyecto se comparte bajo **Creative Commons Atribución-NoComercial 4.0
+Internacional (CC BY-NC 4.0)**. En resumen:
+
+- ✅ **Uso personal, libre y gratuito**: puedes usarlo, copiarlo, modificarlo y
+  compartirlo sin costo.
+- ✍️ **Atribución**: si lo usas, lo mencionas o publicas algo con él, debes dar
+  crédito a **Carlos Vasquez** y enlazar a este repositorio.
+- ❌ **No comercial**: no puedes venderlo, revenderlo ni usarlo con fines
+  comerciales sin permiso previo por escrito del autor.
+
+Al llevar la cláusula *NoComercial*, el proyecto es **de código disponible
+(source-available) y gratuito para uso no comercial**, no "open source" en el
+sentido estricto de la OSI. Para uso comercial, contacta al autor.
+
+El texto completo está en [LICENSE](LICENSE).
