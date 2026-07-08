@@ -10,6 +10,30 @@ La captura se dibuja en un canvas WebGL con un mapeo de textura
 como un rectángulo proyectado (no una simple deformación lineal), que es
 justamente lo que compensa la inclinación del proyector.
 
+![A la izquierda, la pestaña original tal cual. A la derecha, la ventana proyector con la misma página deformada como trapecio y el panel de control de la extensión.](images/trapezoid-extension-ui.png)
+
+*Entrada y salida lado a lado: a la izquierda, la pestaña original tal cual la
+ves en Chrome; a la derecha, la **ventana proyector** con esa misma página
+deformada como trapecio (aquí además volteada para montaje en techo) junto al
+panel de control de la extensión.*
+
+## En acción con un proyector real
+
+Un proyector económico sin ajuste de keystone propio, apoyado **inclinado** sobre
+un soporte para apuntar a la pantalla:
+
+<p align="center">
+  <img src="images/proyector-1-inclinado.jpeg" alt="Proyector apoyado inclinado sobre un soporte" width="320">
+</p>
+
+Al estar inclinado, la imagen llega **deformada como trapecio**. Con la extensión
+corriges el keystone por software hasta que se ve recta:
+
+| Sin corrección | Con la extensión |
+|:---:|:---:|
+| ![Imagen proyectada en forma de trapecio, sin corrección](images/proyector-2-inclinado-sin-correccion.jpeg) | ![Imagen proyectada recta, corregida con la extensión](images/proyector-3-inclinado-con-correccion.jpeg) |
+| El proyector inclinado produce un trapecio: los bordes quedan torcidos y la imagen no llena la pantalla. | La corrección de keystone endereza la imagen para que ocupe la pantalla como un rectángulo. |
+
 ## Características
 
 - **Tres fuentes de video** seleccionables (en la pantalla inicial o en el
