@@ -46,12 +46,28 @@ corriges el keystone por software hasta que se ve recta:
   completa** automáticamente cuando hay dos pantallas.
 - **Voltear vertical / horizontal** (útil para montaje en techo o
   retroproyección).
-- **Dos botones grandes: Acercar / Alejar** para juntar o separar las esquinas
-  superiores del trapecio de forma muy simple.
+- **Acercar / Alejar** para juntar o separar las esquinas **superiores** e
+  **inferiores** del trapecio de forma muy simple. «Alejar» puede sobrepasar los
+  bordes de la pantalla para agrandar la imagen.
+- **Zoom (Agrandar / Achicar)** para escalar toda la imagen proyectada.
+- **Tamaño (Ancho / Alto)** para estirar o encoger la imagen en cada eje de forma
+  independiente (útil si el proyector la deja demasiado ancha o demasiado alta),
+  con dos ajustes automáticos: **Rellenar** (cubre todo el ancho y alto,
+  estirando sin respetar la proporción) y **Uniforme** (ocupa el máximo posible
+  manteniendo la proporción original de la fuente).
+- **Inclinación izquierda / derecha** para rotar el lienzo y compensar un
+  proyector que quedó torcido.
+- **Mover el canvas** (arriba, abajo, izquierda y derecha) para reposicionar la
+  imagen dentro de la pantalla, con un botón central para centrarla de nuevo.
 - Ajuste avanzado de las **4 esquinas** (X e Y) para corrección de keystone de 4
   puntos.
 - Rejilla de alineación opcional.
-- La calibración se **guarda** y se recuerda entre sesiones.
+- La **última configuración usada** —esquinas, tamaño (ancho/alto), zoom,
+  inclinación, posición, paso y volteos— se guarda sola y se vuelve a cargar
+  automáticamente al abrir el proyector.
+- **Guardar / Cargar un «Default»**: guarda tu calibración preferida en una ranura
+  aparte y restáurala cuando quieras con un clic (distinto de «Reiniciar», que
+  vuelve al rectángulo de fábrica).
 
 ## Instalación (modo desarrollador)
 
@@ -69,12 +85,12 @@ corriges el keystone por software hasta que se ve recta:
    - Se genera la captura de esa pestaña y se abre la **ventana proyector**.
    - Si tienes un segundo monitor, la ventana se coloca allí en pantalla
      completa. Si no, arrastra la ventana al proyector y pulsa **F**.
-3. Usa los botones para ajustar el trapecio hasta que la imagen se vea recta en
-   la pantalla del proyector:
-   - **Acercar**: junta las esquinas superiores (imagen más angosta arriba).
-   - **Alejar**: separa las esquinas superiores.
-4. Si necesitas corregir también las esquinas inferiores o un lado concreto,
-   abre **«Ajuste por esquina»** y mueve cada esquina de forma independiente.
+3. Usa los botones **Acercar / Alejar** de las esquinas **superiores** e
+   **inferiores** para ajustar el trapecio hasta que la imagen se vea recta:
+   - **Acercar**: junta esas dos esquinas (ese borde queda más angosto).
+   - **Alejar**: las separa (puede sobrepasar la pantalla para agrandar).
+4. Para un ajuste fino de una esquina concreta, abre **«Ajuste por esquina»** y
+   mueve cada una de forma independiente.
 
 Para **cambiar de fuente** en cualquier momento, usa la fila **«Fuente»** del
 panel: *Pestaña*, *Ventana / Pantalla* o *Webcam*. Con webcam aparece un
@@ -93,18 +109,22 @@ permiso de cámara).
 | `1` `2` `3` `4` | Seleccionar esquina (SupIzq, SupDer, InfIzq, InfDer)       |
 | `←` `→` `↑` `↓` | Mover la esquina seleccionada                              |
 | `+` / `-`    | Aumentar / reducir el tamaño del paso                         |
+| `RePág` / `AvPág` | Zoom: agrandar / achicar la imagen                       |
+| `,` / `.`    | Inclinar (rotar) el lienzo a la izquierda / derecha           |
+| `W` `A` `S` `D` | Mover el canvas (arriba / izquierda / abajo / derecha)     |
 | `V`          | Voltear verticalmente                                         |
 | `B`          | Voltear horizontalmente                                       |
 | `F`          | Pantalla completa                                             |
 | `G`          | Mostrar / ocultar rejilla de alineación                       |
 | `H`          | Ciclar el panel: completo → mini (botón) → oculto             |
-| `R`          | Reiniciar la calibración                                      |
+| `R`          | Reiniciar la calibración (esquinas, zoom, tamaño, inclinación y posición) |
 
 ## Cómo funciona la corrección
 
-Las 4 esquinas del cuadrilátero viven en coordenadas NDC (`-1..1`). El borde
-inferior queda por defecto pegado a los bordes de la pantalla y el borde
-superior se estrecha o ensancha con los botones.
+Las 4 esquinas del cuadrilátero viven en coordenadas NDC y pueden **sobrepasar
+los bordes de la pantalla** (más allá de `-1..1`) para agrandar la imagen si hace
+falta. Tanto el borde superior como el inferior se estrechan o ensanchan con sus
+propios botones de Acercar / Alejar.
 
 Para que la textura no se deforme de manera afín (incorrecta), se calcula la
 coordenada homogénea `q` de cada vértice a partir de la intersección de las
@@ -120,6 +140,7 @@ manifest.json        Manifest V3 de la extensión
 background.js         Service worker: captura la pestaña y abre el proyector
 viewer.html/css/js    Ventana proyector: WebGL + controles del trapecio
 icons/                Iconos generados
+images/               Capturas usadas en este README
 tools/generate_icons.py  Generador de iconos (solo stdlib de Python)
 ```
 
@@ -131,3 +152,7 @@ tools/generate_icons.py  Generador de iconos (solo stdlib de Python)
 - `activeTab` — acceso a la pestaña activa al invocar la extensión.
 
 No se envía nada a ningún servidor: todo el procesamiento es local en tu equipo.
+
+## Autor
+
+Desarrollado por **Carlos Vasquez** — <https://github.com/cvasquez-github/chrome-trapezoid-extenson>
